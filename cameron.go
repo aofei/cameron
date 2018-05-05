@@ -8,8 +8,8 @@ import (
 )
 
 // NewIdenticon returns an identicon avatar based on the data with the length
-// and the squareLength.
-func NewIdenticon(data []byte, length, squareLength int) image.Image {
+// and the blockLength.
+func NewIdenticon(data []byte, length, blockLength int) image.Image {
 	b := md5.Sum(data)
 
 	img := image.NewPaletted(
@@ -30,27 +30,27 @@ func NewIdenticon(data []byte, length, squareLength int) image.Image {
 		},
 	)
 
-	padding := (length - (length/squareLength)*squareLength) / 2
+	padding := (length - (length/blockLength)*blockLength) / 2
 	if padding == 0 {
-		padding = squareLength / 2
+		padding = blockLength / 2
 	}
 
-	barsCount := (length - 2*padding) / squareLength
+	barsCount := (length - 2*padding) / blockLength
 
-	pixels := make([]byte, squareLength)
-	for i := 0; i < squareLength; i++ {
+	pixels := make([]byte, blockLength)
+	for i := 0; i < blockLength; i++ {
 		pixels[i] = 1
 	}
 
 	v, ri, ci := binary.BigEndian.Uint64(b[:]), 0, 0
 	for i := 0; i < barsCount*(barsCount+1)/2; i++ {
 		if v>>uint(i)&1 == 1 {
-			for i := 0; i < squareLength; i++ {
-				x := padding + ri*squareLength
-				y := padding + ci*squareLength + i
+			for i := 0; i < blockLength; i++ {
+				x := padding + ri*blockLength
+				y := padding + ci*blockLength + i
 				copy(img.Pix[img.PixOffset(x, y):], pixels)
 
-				x = padding + (barsCount-1-ri)*squareLength
+				x = padding + (barsCount-1-ri)*blockLength
 				copy(img.Pix[img.PixOffset(x, y):], pixels)
 			}
 		}
