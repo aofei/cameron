@@ -10,9 +10,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNewIdenticon(t *testing.T) {
+func TestIdenticon(t *testing.T) {
 	buf := &bytes.Buffer{}
-	jpeg.Encode(buf, NewIdenticon([]byte("cameron"), 10, 1), &jpeg.Options{
+	jpeg.Encode(buf, Identicon([]byte("cameron"), 10, 1), &jpeg.Options{
 		Quality: jpeg.DefaultQuality,
 	})
 	assert.Equal(

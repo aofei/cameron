@@ -7,9 +7,9 @@ import (
 	"image/color"
 )
 
-// NewIdenticon returns an identicon avatar based on the data with the length
-// and the blockLength.
-func NewIdenticon(data []byte, length, blockLength int) image.Image {
+// Identicon returns an identicon avatar based on the data with the length and
+// the blockLength. Same parameters, same result.
+func Identicon(data []byte, length, blockLength int) image.Image {
 	b := md5.Sum(data)
 
 	img := image.NewPaletted(
