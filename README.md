@@ -29,9 +29,11 @@ done.
 
 ## Documentation
 
+* [English](https://github.com/sheng/cameron/wiki/Documentation)
+* [简体中文](https://github.com/sheng/cameron/wiki/文档)
 * [GoDoc](https://godoc.org/github.com/sheng/cameron)
 
-## Example
+## Examples
 
 If you want to be familiar with this project as soon as possible, simply visit
 [here](https://github.com/air-examples/cameron).
