@@ -25,7 +25,7 @@ $ go get github.com/sheng/cameron
 
 done.
 
-> The only requirement is the [Go](https://golang.org), at least v1.8.
+> The only requirement is the [Go](https://golang.org), at least v1.7.
 
 ## Documentation
 
