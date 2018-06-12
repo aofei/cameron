@@ -12,12 +12,12 @@ import (
 
 func TestIdenticon(t *testing.T) {
 	buf := &bytes.Buffer{}
-	jpeg.Encode(buf, Identicon([]byte("cameron"), 10, 1), &jpeg.Options{
-		Quality: jpeg.DefaultQuality,
+	jpeg.Encode(buf, Identicon([]byte("cameron"), 540, 50), &jpeg.Options{
+		Quality: 100,
 	})
 	assert.Equal(
 		t,
+		"8c21b5962fb72f62232765eb0b5e6ddd",
 		fmt.Sprintf("%x", md5.Sum(buf.Bytes())),
-		"2d809f43b9ab5e2f80966824a3b6f94b",
 	)
 }
