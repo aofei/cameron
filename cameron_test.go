@@ -1,9 +1,8 @@
 package cameron
 
 import (
-	"bytes"
-	"crypto/md5"
-	"fmt"
+	"crypto/sha256"
+	"encoding/base64"
 	"image/jpeg"
 	"testing"
 
@@ -11,13 +10,13 @@ import (
 )
 
 func TestIdenticon(t *testing.T) {
-	buf := &bytes.Buffer{}
-	jpeg.Encode(buf, Identicon([]byte("cameron"), 540, 50), &jpeg.Options{
+	h := sha256.New()
+	jpeg.Encode(h, Identicon([]byte("cameron"), 540, 50), &jpeg.Options{
 		Quality: 100,
 	})
 	assert.Equal(
 		t,
-		"8c21b5962fb72f62232765eb0b5e6ddd",
-		fmt.Sprintf("%x", md5.Sum(buf.Bytes())),
+		"3zDt4JrN67koaZjApe1Be4XYgBvc3IHG58idszxH/9s=",
+		base64.StdEncoding.EncodeToString(h.Sum(nil)),
 	)
 }

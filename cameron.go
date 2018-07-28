@@ -1,7 +1,7 @@
 package cameron
 
 import (
-	"crypto/md5"
+	"crypto/sha256"
 	"encoding/binary"
 	"image"
 	"image/color"
@@ -10,7 +10,7 @@ import (
 // Identicon returns an identicon avatar based on the data with the length and
 // the blockLength. Same parameters, same result.
 func Identicon(data []byte, length, blockLength int) image.Image {
-	b := md5.Sum(data)
+	b := sha256.Sum256(data)
 
 	img := image.NewPaletted(
 		image.Rect(0, 0, length, length),
