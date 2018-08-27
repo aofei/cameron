@@ -16,9 +16,9 @@ func Identicon(data []byte, length, blockLength int) image.Image {
 		image.Rect(0, 0, length, length),
 		color.Palette{
 			color.NRGBA{
-				R: 0xf0,
-				G: 0xf0,
-				B: 0xf0,
+				R: 0xff ^ b[0],
+				G: 0xff ^ b[1],
+				B: 0xff ^ b[2],
 				A: 0xff,
 			},
 			color.NRGBA{

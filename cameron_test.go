@@ -16,7 +16,7 @@ func TestIdenticon(t *testing.T) {
 	})
 	assert.Equal(
 		t,
-		"zkTqoIfVRf76k65VbTogpMKZp7UosRv/uRR430Dcijs=",
+		"y3jnndWcyK5fwrXS/9XZIrqRpuh/4A38QqaG6p6Avkw=",
 		base64.StdEncoding.EncodeToString(h.Sum(nil)),
 	)
 
@@ -26,7 +26,7 @@ func TestIdenticon(t *testing.T) {
 	})
 	assert.Equal(
 		t,
-		"4/ID3mdOOmI1eT7gllbTFWNheUv9qAGn98sIqHih9ec=",
+		"M01zWgg9zInfYwYVNDTaS+xHX5w0MB2fnRcZF6UmWfA=",
 		base64.StdEncoding.EncodeToString(h.Sum(nil)),
 	)
 
