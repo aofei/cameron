@@ -16,26 +16,35 @@ func Identicon(data []byte, length, blockLength int) image.Image {
 		image.Rect(0, 0, length, length),
 		color.Palette{
 			color.NRGBA{
+				R: 0xf0,
+				G: 0xf0,
+				B: 0xf0,
+				A: 0xff,
+			},
+			color.NRGBA{
 				R: b[0],
 				G: b[1],
 				B: b[2],
 				A: 0xff,
 			},
-			color.NRGBA{
-				R: 255 - b[0],
-				G: 255 - b[1],
-				B: 255 - b[2],
-				A: 0xff,
-			},
 		},
 	)
 
-	padding := (length - (length/blockLength)*blockLength) / 2
-	if padding == 0 {
-		padding = blockLength / 2
+	if blockLength > length {
+		blockLength = length
 	}
 
-	barsCount := (length - 2*padding) / blockLength
+	columnsCount := length / blockLength
+	padding := blockLength / 2
+	if length%blockLength != 0 {
+		padding = (length - blockLength*columnsCount) / 2
+	} else if columnsCount > 1 {
+		columnsCount--
+	} else {
+		padding = 0
+	}
+
+	filled := columnsCount == 1
 
 	pixels := make([]byte, blockLength)
 	for i := 0; i < blockLength; i++ {
@@ -43,20 +52,20 @@ func Identicon(data []byte, length, blockLength int) image.Image {
 	}
 
 	v, ri, ci := binary.BigEndian.Uint64(b[:]), 0, 0
-	for i := 0; i < barsCount*(barsCount+1)/2; i++ {
-		if v>>uint(i)&1 == 1 {
+	for i := 0; i < columnsCount*(columnsCount+1)/2; i++ {
+		if filled || v>>uint(i%64)&1 == 1 {
 			for i := 0; i < blockLength; i++ {
 				x := padding + ri*blockLength
 				y := padding + ci*blockLength + i
 				copy(img.Pix[img.PixOffset(x, y):], pixels)
 
-				x = padding + (barsCount-1-ri)*blockLength
+				x = padding + (columnsCount-1-ri)*blockLength
 				copy(img.Pix[img.PixOffset(x, y):], pixels)
 			}
 		}
 
 		ci++
-		if ci == barsCount {
+		if ci == columnsCount {
 			ci = 0
 			ri++
 		}
