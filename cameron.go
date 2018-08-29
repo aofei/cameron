@@ -1,6 +1,7 @@
 package cameron
 
 import (
+	"bytes"
 	"crypto/sha256"
 	"encoding/binary"
 	"image"
@@ -44,16 +45,14 @@ func Identicon(data []byte, length, blockLength int) image.Image {
 		padding = 0
 	}
 
-	filled := columnsCount == 1
+	var (
+		filled   = columnsCount == 1
+		sequence = binary.BigEndian.Uint64(b[:])
+		pixels   = bytes.Repeat([]byte{1}, blockLength)
+	)
 
-	pixels := make([]byte, blockLength)
-	for i := 0; i < blockLength; i++ {
-		pixels[i] = 1
-	}
-
-	v, ri, ci := binary.BigEndian.Uint64(b[:]), 0, 0
-	for i := 0; i < columnsCount*(columnsCount+1)/2; i++ {
-		if filled || v>>uint(i%64)&1 == 1 {
+	for i, ri, ci := 0, 0, 0; i < columnsCount*(columnsCount+1)/2; i++ {
+		if filled || sequence>>uint(i%64)&1 == 1 {
 			for i := 0; i < blockLength; i++ {
 				x := padding + ri*blockLength
 				y := padding + ci*blockLength + i
