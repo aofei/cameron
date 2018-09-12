@@ -1,9 +1,9 @@
 # Cameron
 
-[![Build Status](https://travis-ci.org/sheng/cameron.svg?branch=master)](https://travis-ci.org/sheng/cameron)
-[![Coverage Status](https://coveralls.io/repos/github/sheng/cameron/badge.svg?branch=master)](https://coveralls.io/github/sheng/cameron?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/sheng/cameron)](https://goreportcard.com/report/github.com/sheng/cameron)
-[![GoDoc](https://godoc.org/github.com/sheng/cameron?status.svg)](https://godoc.org/github.com/sheng/cameron)
+[![Build Status](https://travis-ci.org/aofei/cameron.svg?branch=master)](https://travis-ci.org/aofei/cameron)
+[![Coverage Status](https://coveralls.io/repos/github/aofei/cameron/badge.svg?branch=master)](https://coveralls.io/github/aofei/cameron?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/aofei/cameron)](https://goreportcard.com/report/github.com/aofei/cameron)
+[![GoDoc](https://godoc.org/github.com/aofei/cameron?status.svg)](https://godoc.org/github.com/aofei/cameron)
 
 An avatar generator for Go.
 
@@ -20,7 +20,7 @@ Oh, by the way, the name of this project came from
 Open your terminal and execute
 
 ```bash
-$ go get github.com/sheng/cameron
+$ go get github.com/aofei/cameron
 ```
 
 done.
@@ -29,9 +29,9 @@ done.
 
 ## Documentation
 
-* [English](https://github.com/sheng/cameron/wiki/Documentation)
-* [简体中文](https://github.com/sheng/cameron/wiki/文档)
-* [GoDoc](https://godoc.org/github.com/sheng/cameron)
+* [English](https://github.com/aofei/cameron/wiki/Documentation)
+* [简体中文](https://github.com/aofei/cameron/wiki/文档)
+* [GoDoc](https://godoc.org/github.com/aofei/cameron)
 
 ## Examples
 
@@ -41,13 +41,13 @@ If you want to be familiar with this project as soon as possible, simply visit
 ## Community
 
 If you want to discuss this project, or ask questions about it, simply post
-questions or ideas [here](https://github.com/sheng/cameron/issues).
+questions or ideas [here](https://github.com/aofei/cameron/issues).
 
 ## Contributing
 
 If you want to help build this project, simply follow
-[this](https://github.com/sheng/cameron/wiki/Contributing) to send pull requests
-[here](https://github.com/sheng/cameron/pulls).
+[this](https://github.com/aofei/cameron/wiki/Contributing) to send pull requests
+[here](https://github.com/aofei/cameron/pulls).
 
 ## TODOs
 
