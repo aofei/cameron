@@ -7,7 +7,7 @@
 
 An avatar generator for Go.
 
-Oh, by the way, the name of this project came from
+Oh, by the way, the name of this project came from the
 [Avatar](https://en.wikipedia.org/wiki/Avatar_(2009_film))'s director
 [James Cameron](https://en.wikipedia.org/wiki/James_Cameron).
 
