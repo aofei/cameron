@@ -27,12 +27,6 @@ done.
 
 > The only requirement is the [Go](https://golang.org), at least v1.7.
 
-## Documentation
-
-* [English](https://github.com/aofei/cameron/wiki/Documentation)
-* [简体中文](https://github.com/aofei/cameron/wiki/文档)
-* [GoDoc](https://godoc.org/github.com/aofei/cameron)
-
 ## Examples
 
 If you want to be familiar with this project as soon as possible, simply visit
