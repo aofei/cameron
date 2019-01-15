@@ -2,30 +2,29 @@ package cameron
 
 import (
 	"bytes"
-	"crypto/sha256"
-	"encoding/binary"
 	"image"
 	"image/color"
+
+	"github.com/cespare/xxhash"
 )
 
 // Identicon returns an identicon avatar based on the data with the length and
 // the blockLength. Same parameters, same result.
 func Identicon(data []byte, length, blockLength int) image.Image {
-	b := sha256.Sum256(data)
-
+	digest := xxhash.Sum64(data)
 	img := image.NewPaletted(
 		image.Rect(0, 0, length, length),
 		color.Palette{
 			color.NRGBA{
-				R: 0xff ^ b[0],
-				G: 0xff ^ b[1],
-				B: 0xff ^ b[2],
+				R: byte(digest),
+				G: byte(digest >> 8),
+				B: byte(digest >> 16),
 				A: 0xff,
 			},
 			color.NRGBA{
-				R: b[0],
-				G: b[1],
-				B: b[2],
+				R: 0xff ^ byte(digest),
+				G: 0xff ^ byte(digest>>8),
+				B: 0xff ^ byte(digest>>16),
 				A: 0xff,
 			},
 		},
@@ -46,13 +45,12 @@ func Identicon(data []byte, length, blockLength int) image.Image {
 	}
 
 	var (
-		filled   = columnsCount == 1
-		sequence = binary.BigEndian.Uint64(b[:])
-		pixels   = bytes.Repeat([]byte{1}, blockLength)
+		filled = columnsCount == 1
+		pixels = bytes.Repeat([]byte{1}, blockLength)
 	)
 
 	for i, ri, ci := 0, 0, 0; i < columnsCount*(columnsCount+1)/2; i++ {
-		if filled || sequence>>uint(i%64)&1 == 1 {
+		if filled || digest>>uint(i%64)&1 == 1 {
 			for i := 0; i < blockLength; i++ {
 				x := padding + ri*blockLength
 				y := padding + ci*blockLength + i

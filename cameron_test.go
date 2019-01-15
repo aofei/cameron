@@ -1,42 +1,23 @@
 package cameron
 
 import (
-	"crypto/sha256"
-	"encoding/base64"
 	"image/jpeg"
 	"testing"
 
+	"github.com/cespare/xxhash"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestIdenticon(t *testing.T) {
-	h := sha256.New()
-	jpeg.Encode(h, Identicon([]byte("cameron"), 540, 60), &jpeg.Options{
-		Quality: 100,
-	})
-	assert.Equal(
-		t,
-		"y3jnndWcyK5fwrXS/9XZIrqRpuh/4A38QqaG6p6Avkw=",
-		base64.StdEncoding.EncodeToString(h.Sum(nil)),
-	)
+	d := xxhash.New()
+	jpeg.Encode(d, Identicon([]byte("cameron"), 540, 60), nil)
+	assert.Equal(t, uint64(0x88a6d1f1f6986239), d.Sum64())
 
-	h = sha256.New()
-	jpeg.Encode(h, Identicon([]byte("cameron"), 540, 65), &jpeg.Options{
-		Quality: 100,
-	})
-	assert.Equal(
-		t,
-		"M01zWgg9zInfYwYVNDTaS+xHX5w0MB2fnRcZF6UmWfA=",
-		base64.StdEncoding.EncodeToString(h.Sum(nil)),
-	)
+	d.Reset()
+	jpeg.Encode(d, Identicon([]byte("cameron"), 540, 65), nil)
+	assert.Equal(t, uint64(0x4e18c5d23e0bec77), d.Sum64())
 
-	h = sha256.New()
-	jpeg.Encode(h, Identicon([]byte("cameron"), 540, 1080), &jpeg.Options{
-		Quality: 100,
-	})
-	assert.Equal(
-		t,
-		"tmW9Svizstxyk0t3C3/ZlGa1ZmyJDSgfAT/Qb/gvQb8=",
-		base64.StdEncoding.EncodeToString(h.Sum(nil)),
-	)
+	d.Reset()
+	jpeg.Encode(d, Identicon([]byte("cameron"), 540, 1080), nil)
+	assert.Equal(t, uint64(0x3ec4415b1f794db7), d.Sum64())
 }
