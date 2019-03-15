@@ -5,7 +5,7 @@ import (
 	"image"
 	"image/color"
 
-	"github.com/cespare/xxhash"
+	"github.com/cespare/xxhash/v2"
 )
 
 // Identicon returns an identicon avatar based on the data with the length and
