@@ -44,11 +44,8 @@ func Identicon(data []byte, length, blockLength int) image.Image {
 		padding = 0
 	}
 
-	var (
-		filled = columnsCount == 1
-		pixels = bytes.Repeat([]byte{1}, blockLength)
-	)
-
+	filled := columnsCount == 1
+	pixels := bytes.Repeat([]byte{1}, blockLength)
 	for i, ri, ci := 0, 0, 0; i < columnsCount*(columnsCount+1)/2; i++ {
 		if filled || digest>>uint(i%64)&1 == 1 {
 			for i := 0; i < blockLength; i++ {
