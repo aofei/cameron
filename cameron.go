@@ -1,3 +1,6 @@
+/*
+Package cameron implements an avatar generator for Go.
+*/
 package cameron
 
 import (
