@@ -29,17 +29,17 @@ done.
 
 ## Examples
 
-If you want to be familiar with this project as soon as possible, simply visit
+If you want to be familiar with Cameron as soon as possible, simply visit
 [here](https://github.com/air-examples/cameron).
 
 ## Community
 
-If you want to discuss this project, or ask questions about it, simply post
-questions or ideas [here](https://github.com/aofei/cameron/issues).
+If you want to discuss Cameron, or ask questions about it, simply post questions
+or ideas [here](https://github.com/aofei/cameron/issues).
 
 ## Contributing
 
-If you want to help build this project, simply follow
+If you want to help build Cameron, simply follow
 [this](https://github.com/aofei/cameron/wiki/Contributing) to send pull requests
 [here](https://github.com/aofei/cameron/pulls).
 
