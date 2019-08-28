@@ -1,7 +1,6 @@
 # Cameron
 
-[![Build Status](https://travis-ci.org/aofei/cameron.svg?branch=master)](https://travis-ci.org/aofei/cameron)
-[![Coverage Status](https://coveralls.io/repos/github/aofei/cameron/badge.svg?branch=master)](https://coveralls.io/github/aofei/cameron?branch=master)
+[![codecov](https://codecov.io/gh/aofei/cameron/branch/master/graph/badge.svg)](https://codecov.io/gh/aofei/cameron)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aofei/cameron)](https://goreportcard.com/report/github.com/aofei/cameron)
 [![GoDoc](https://godoc.org/github.com/aofei/cameron?status.svg)](https://godoc.org/github.com/aofei/cameron)
 
