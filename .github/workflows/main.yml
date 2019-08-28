@@ -7,8 +7,6 @@ jobs:
     strategy:
       matrix:
         go:
-          - "1.9.x"
-          - "1.10.x"
           - "1.11.x"
           - "1.12.x"
     steps:
@@ -16,8 +14,6 @@ jobs:
         uses: actions/setup-go@v1.0.2
         with:
           go-version: ${{matrix.go}}
-        env:
-          GOPATH: /home/runner/go # Fix for actions/setup-go@v1.0.2
       - name: Check out code
         uses: actions/checkout@v1.0.0
       - name: Get modules
