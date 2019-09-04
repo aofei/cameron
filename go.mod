@@ -1,9 +1,9 @@
 module github.com/aofei/cameron
 
+go 1.13
+
 require (
-	github.com/OneOfOne/xxhash v1.2.5 // indirect
-	github.com/cespare/xxhash/v2 v2.0.0
+	github.com/cespare/xxhash/v2 v2.1.0
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/spaolacci/murmur3 v1.1.0 // indirect
-	github.com/stretchr/testify v1.3.0
+	github.com/stretchr/testify v1.4.0
 )
