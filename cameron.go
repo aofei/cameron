@@ -12,7 +12,7 @@ import (
 )
 
 // Identicon returns an identicon avatar based on the data with the length and
-// the blockLength. Same parameters, same result.
+// blockLength. Same parameters, same result.
 func Identicon(data []byte, length, blockLength int) image.Image {
 	digest := xxhash.Sum64(data)
 	img := image.NewPaletted(
