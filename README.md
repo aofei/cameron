@@ -49,7 +49,7 @@ func main() {
 func handleIdenticon(rw http.ResponseWriter, req *http.Request) {
 	buf := bytes.Buffer{}
 	png.Encode(&buf, cameron.Identicon([]byte(req.RequestURI), 540, 60))
-	rw.Header().Set("Content-Type", "image/jpeg")
+	rw.Header().Set("Content-Type", "image/png")
 	buf.WriteTo(rw)
 }
 ```
