@@ -27,10 +27,40 @@ done.
 
 > The only requirement is the [Go](https://golang.org), at least v1.13.
 
-## Examples
+## Quick Start
 
-If you want to be familiar with Cameron as soon as possible, simply visit
-[here](https://github.com/air-examples/cameron).
+Create a file named `cameron.go`
+
+```go
+package main
+
+import (
+	"bytes"
+	"image/png"
+	"net/http"
+
+	"github.com/aofei/cameron"
+)
+
+func main() {
+	http.ListenAndServe("localhost:8080", http.HandlerFunc(handleIdenticon))
+}
+
+func handleIdenticon(rw http.ResponseWriter, req *http.Request) {
+	buf := bytes.Buffer{}
+	png.Encode(&buf, cameron.Identicon([]byte(req.RequestURI), 540, 60))
+	rw.Header().Set("Content-Type", "image/jpeg")
+	buf.WriteTo(rw)
+}
+```
+
+and run it
+
+```bash
+$ go run cameron.go
+```
+
+then visit `http://localhost:8080` with different paths.
 
 ## Community
 
