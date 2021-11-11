@@ -26,5 +26,4 @@ jobs:
       - name: Upload coverage profile
         uses: codecov/codecov-action@v2
         with:
-          token: ${{secrets.CODECOV_TOKEN}}
           file: coverage.out
