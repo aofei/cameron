@@ -43,10 +43,10 @@ import (
 )
 
 func main() {
-	http.ListenAndServe("localhost:8080", http.HandlerFunc(handleIdenticon))
+	http.ListenAndServe("localhost:8080", http.HandlerFunc(identicon))
 }
 
-func handleIdenticon(rw http.ResponseWriter, req *http.Request) {
+func identicon(rw http.ResponseWriter, req *http.Request) {
 	buf := bytes.Buffer{}
 	png.Encode(&buf, cameron.Identicon([]byte(req.RequestURI), 540, 60))
 	rw.Header().Set("Content-Type", "image/png")
