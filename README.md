@@ -1,6 +1,6 @@
 # Cameron
 
-[![GitHub Actions](https://github.com/aofei/cameron/workflows/Main/badge.svg)](https://github.com/aofei/cameron)
+[![GitHub Actions](https://github.com/aofei/cameron/workflows/Test/badge.svg)](https://github.com/aofei/cameron)
 [![codecov](https://codecov.io/gh/aofei/cameron/branch/master/graph/badge.svg)](https://codecov.io/gh/aofei/cameron)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aofei/cameron)](https://goreportcard.com/report/github.com/aofei/cameron)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/aofei/cameron)](https://pkg.go.dev/github.com/aofei/cameron)
