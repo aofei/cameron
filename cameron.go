@@ -11,8 +11,8 @@ import (
 	"github.com/cespare/xxhash/v2"
 )
 
-// Identicon returns an identicon avatar based on the `data` with the `length`
-// and `blockLength`.
+// Identicon returns an identicon avatar based on the data with the length and
+// blockLength.
 func Identicon(data []byte, length, blockLength int) image.Image {
 	digest := xxhash.Sum64(data)
 	img := image.NewPaletted(
