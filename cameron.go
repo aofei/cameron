@@ -28,7 +28,7 @@ func Identicon(data []byte, cell int) image.Image {
 	var nib [32]byte
 	for i := 0; i < 16; i++ {
 		nib[2*i] = digest[i] >> 4     // High 4 bits.
-		nib[2*i+1] = digest[i] & 0x0F // Low 4 bits.
+		nib[2*i+1] = digest[i] & 0x0f // Low 4 bits.
 	}
 
 	// Build the 5×5 symmetry mask.
@@ -66,8 +66,8 @@ func Identicon(data []byte, cell int) image.Image {
 		v = (v << 4) | uint32(nib[i])
 	}
 	hueBits := v >> 16
-	satBits := (v >> 8) & 0xFF
-	lgtBits := v & 0xFF
+	satBits := (v >> 8) & 0xff
+	lgtBits := v & 0xff
 	h := float64(hueBits) * 360 / 4095
 	s := 65.0 - float64(satBits)*20/255
 	l := 75.0 - float64(lgtBits)*20/255

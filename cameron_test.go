@@ -41,7 +41,8 @@ func TestIdenticon(t *testing.T) {
 	t.Run("EmptyInputs", func(t *testing.T) {
 		img := Identicon(nil, 0)
 		got := img.Bounds()
-		if want := image.Rect(0, 0, 6, 6); got != want {
+		want := image.Rect(0, 0, 6, 6)
+		if got != want {
 			t.Errorf("got %v, want %v", got, want)
 		}
 	})
