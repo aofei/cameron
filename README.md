@@ -1,41 +1,35 @@
 # Cameron
 
-[![GitHub Actions](https://github.com/aofei/cameron/workflows/Test/badge.svg)](https://github.com/aofei/cameron)
+[![Test](https://github.com/aofei/cameron/actions/workflows/test.yaml/badge.svg)](https://github.com/aofei/cameron/actions/workflows/test.yaml)
 [![codecov](https://codecov.io/gh/aofei/cameron/branch/master/graph/badge.svg)](https://codecov.io/gh/aofei/cameron)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aofei/cameron)](https://goreportcard.com/report/github.com/aofei/cameron)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/aofei/cameron)](https://pkg.go.dev/github.com/aofei/cameron)
+[![Go Reference](https://pkg.go.dev/badge/github.com/aofei/cameron.svg)](https://pkg.go.dev/github.com/aofei/cameron)
 
 An avatar generator for Go.
 
-Oh, by the way, the name of this project came from the
-[Avatar](https://en.wikipedia.org/wiki/Avatar_(2009_film))'s director
-[James Cameron](https://en.wikipedia.org/wiki/James_Cameron).
+**Fun fact:** this project is named after [James Cameron](https://en.wikipedia.org/wiki/James_Cameron), the director of
+[Avatar](https://en.wikipedia.org/wiki/Avatar_(2009_film)).
 
 ## Features
 
-* [Identicon](https://en.wikipedia.org/wiki/Identicon)
+- [Identicon](https://en.wikipedia.org/wiki/Identicon)
 
 ## Installation
 
-Open your terminal and execute
+To use this project programmatically, `go get` it:
 
 ```bash
-$ go get github.com/aofei/cameron
+go get github.com/aofei/cameron
 ```
-
-done.
-
-> The only requirement is the [Go](https://go.dev), at least v1.13.
 
 ## Quick Start
 
-Create a file named `cameron.go`
+Create a file named `cameron.go`:
 
 ```go
 package main
 
 import (
-	"bytes"
 	"image/png"
 	"net/http"
 
@@ -47,39 +41,33 @@ func main() {
 }
 
 func identicon(rw http.ResponseWriter, req *http.Request) {
-	buf := bytes.Buffer{}
-	png.Encode(&buf, cameron.Identicon([]byte(req.RequestURI), 540, 60))
+	img := cameron.Identicon([]byte(req.RequestURI), 70)
 	rw.Header().Set("Content-Type", "image/png")
-	buf.WriteTo(rw)
+	png.Encode(rw, img)
 }
 ```
 
-and run it
+Then run it:
 
 ```bash
-$ go run cameron.go
+go run cameron.go
 ```
 
-then visit `http://localhost:8080` with different paths.
+Finally, visit `http://localhost:8080` with different paths.
 
 ## Community
 
-If you want to discuss Cameron, or ask questions about it, simply post questions
-or ideas [here](https://github.com/aofei/cameron/issues).
+If you have any questions or ideas about this project, feel free to discuss them
+[here](https://github.com/aofei/cameron/discussions).
 
 ## Contributing
 
-If you want to help build Cameron, simply follow
-[this](https://github.com/aofei/cameron/wiki/Contributing) to send pull requests
-[here](https://github.com/aofei/cameron/pulls).
+If you would like to contribute to this project, please submit issues [here](https://github.com/aofei/cameron/issues)
+or pull requests [here](https://github.com/aofei/cameron/pulls).
 
-## TODOs
-
-* [ ] Add support for cartoon avatar
-* [ ] Add support for simulation avatar
+When submitting a pull request, please make sure its commit messages adhere to
+[Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## License
 
-This project is licensed under the MIT License.
-
-License can be found [here](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
