@@ -24,9 +24,10 @@ jobs:
           - 1.22.x
           - 1.23.x
           - 1.24.x
+          - 1.25.x
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
