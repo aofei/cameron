@@ -13,11 +13,11 @@ import (
 
 // Identicon returns an identicon avatar as an [image.Image] that is visually
 // identical to https://github.com/identicons/{login}.png. All geometric rules,
-// color calculations, and pixel layouts match the implementation GitHub uses
-// in production.
+// color calculations, and pixel layouts match the implementation GitHub uses in
+// production.
 //
-// Note that the final image is a square of 6*cell pixels: five grid
-// columns/rows plus a half-cell margin on every side.
+// Note that the final image is a square of 6*cell pixels from a 5x5 grid plus a
+// half-cell margin on every side.
 func Identicon(data []byte, cell int) image.Image {
 	digest := md5.Sum(data)
 	if cell < 1 {
@@ -31,17 +31,17 @@ func Identicon(data []byte, cell int) image.Image {
 		nib[2*i+1] = digest[i] & 0x0f // Low 4 bits.
 	}
 
-	// Build the 5×5 symmetry mask.
+	// Build the 5x5 symmetry mask.
 	//
 	// The first 15 nibbles decide the left half of the grid:
-	//   - Nibbles 0–4 fill the center column (column index 2).
-	//   - Nibbles 5–9 fill the column immediately left of center (index 1).
-	//   - Nibbles 10–14 fill the left-most column (index 0).
+	//   - Nibbles 0-4 fill the center column (index 2)
+	//   - Nibbles 5-9 fill the column immediately left of center (index 1)
+	//   - Nibbles 10-14 fill the leftmost column (index 0)
 	//
 	// A pixel is set only when its nibble value is even.
 	//
-	// Once the left half is filled, copy it to columns 3 and 4 to
-	// complete the grid and guarantee horizontal symmetry.
+	// Once the left half is filled, copy it to columns 3 and 4 to complete
+	// the grid and guarantee horizontal symmetry.
 	var mask [5][5]bool
 	for i := 0; i < 15; i++ {
 		if nib[i]%2 == 0 {
@@ -57,10 +57,10 @@ func Identicon(data []byte, cell int) image.Image {
 
 	// Derive the foreground color from HSL.
 	//
-	// The final 7 nibbles are interpreted as HHHSSLL, where:
-	//   - HHH (12 bits) maps to hue in [0, 360) degrees.
-	//   - SS (8 bits) maps to saturation in [45, 65] percent.
-	//   - LL (8 bits) maps to lightness in [55, 75] percent.
+	// The final 7 nibbles are interpreted as HHHSSLL, where
+	//   - HHH (12 bits) maps to hue in [0, 360) degrees
+	//   - SS (8 bits) maps to saturation in [45, 65] percent
+	//   - LL (8 bits) maps to lightness in [55, 75] percent
 	var v uint32
 	for i := 25; i < 32; i++ {
 		v = (v << 4) | uint32(nib[i])
@@ -78,8 +78,8 @@ func Identicon(data []byte, cell int) image.Image {
 
 	// Allocate the palette-based image and fill it.
 	//
-	// The bitmap is six logical cells per side: five pattern cells plus a
-	// half-cell margin on each edge. Using a palette keeps memory small.
+	// The bitmap is six logical cells per side with five pattern cells plus
+	// a half-cell margin on each edge. Using a palette keeps memory small.
 	size := 6 * cell
 	img := image.NewPaletted(image.Rect(0, 0, size, size), color.Palette{bg, fg})
 	margin := cell / 2                      // Half-cell margin in pixels.
