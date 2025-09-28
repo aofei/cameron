@@ -7,7 +7,7 @@
 
 An avatar generator for Go.
 
-**Fun fact:** this project is named after [James Cameron](https://en.wikipedia.org/wiki/James_Cameron), the director of
+Fun fact, Cameron is named after [James Cameron](https://en.wikipedia.org/wiki/James_Cameron), the director of
 [Avatar](https://en.wikipedia.org/wiki/Avatar_(2009_film)).
 
 ## Features
@@ -22,7 +22,7 @@ To use this project programmatically, `go get` it:
 go get github.com/aofei/cameron
 ```
 
-## Quick Start
+## Quickstart
 
 Create a file named `cameron.go`:
 
