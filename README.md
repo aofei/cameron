@@ -12,7 +12,8 @@ Fun fact, Cameron is named after [James Cameron](https://en.wikipedia.org/wiki/J
 
 ## Features
 
-- [Identicon](https://en.wikipedia.org/wiki/Identicon)
+- Pixel-perfect [GitHub Identicons](https://github.blog/news-insights/company-news/identicons/)
+- Zero third-party dependencies
 
 ## Installation
 
