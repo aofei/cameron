@@ -2,7 +2,6 @@
 
 [![Test](https://github.com/aofei/cameron/actions/workflows/test.yaml/badge.svg)](https://github.com/aofei/cameron/actions/workflows/test.yaml)
 [![codecov](https://codecov.io/gh/aofei/cameron/branch/master/graph/badge.svg)](https://codecov.io/gh/aofei/cameron)
-[![Go Report Card](https://goreportcard.com/badge/github.com/aofei/cameron)](https://goreportcard.com/report/github.com/aofei/cameron)
 [![Go Reference](https://pkg.go.dev/badge/github.com/aofei/cameron.svg)](https://pkg.go.dev/github.com/aofei/cameron)
 
 An avatar generator for Go.
